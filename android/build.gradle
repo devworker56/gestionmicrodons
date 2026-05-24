@@ -18,4 +18,30 @@ buildscript {
     }
 }
 
+// Add this allprojects section - it's missing in your file!
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        
+        // Add JitPack repository (required for many React Native libraries)
+        maven { url 'https://www.jitpack.io' }
+        
+        // Add Maven Central explicitly (sometimes needed)
+        maven {
+            url = uri("https://repo.maven.apache.org/maven2/")
+        }
+        
+        // Add the specific repository for async-storage
+        maven {
+            url = uri("https://storage.googleapis.com/r8-releases/raw")
+        }
+        
+        // This is important - Android's default repository
+        maven {
+            url = uri("https://maven.google.com")
+        }
+    }
+}
+
 apply plugin: "com.facebook.react.rootproject"
